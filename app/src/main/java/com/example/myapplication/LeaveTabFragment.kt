@@ -5,55 +5,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.leaveapp.databinding.FragmentLeaveTabBinding
-import com.example.myapplication.databinding.FragmentTabBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.databinding.FragmentLeaveSummaryBinding
 
-class LeaveTabFragment : Fragment() {
-    private var _binding: FragmentLeaveTabBinding? = null
-    private var _binding: FragmentTabBinding? = null
+class LeaveFragment : Fragment() {
+
+    private var _binding: FragmentLeaveSummaryBinding? = null
     private val binding get() = _binding!!
-    private var tabName: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            tabName = it.getString(ARG_TAB_NAME)
-        }
-    }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTabBinding.inflate(inflater, container, false)
+        _binding = FragmentLeaveSummaryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
-        binding.textView.text = when (tabName) {
-            "Pending" -> "Your pending leave requests will appear here"
-            "Approved" -> "Your approved leave requests will appear here"
-            else -> tabName
+
+        // Sample data
+        val leaveList = listOf("Annual Leave", "Sick Leave", "Casual Leave")
+
+        // Set up RecyclerView
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = LeaveAdapter(leaveList)
+
+        // Submit Leave button opens dialog
+        binding.submitLeaveButton.setOnClickListener {
+            val dialog = SubmitLeaveDialogFragment()
+            dialog.show(parentFragmentManager, "SubmitLeaveDialog")
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        private const val ARG_TAB_NAME = "tab_name"
-
-        fun newInstance(tabName: String): LeaveTabFragment {
-            return LeaveTabFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_TAB_NAME, tabName)
-                }
-            }
-        }
     }
 }

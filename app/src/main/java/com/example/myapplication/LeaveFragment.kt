@@ -24,12 +24,18 @@ class LeaveFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Sample leave data
+        // Sample data
         val leaveList = listOf("Annual Leave", "Sick Leave", "Casual Leave")
 
         // Set up RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = LeaveAdapter(leaveList)
+
+        // Submit Leave button opens dialog
+        binding.submitLeaveButton.setOnClickListener {
+            val dialog = SubmitLeaveDialogFragment()
+            dialog.show(parentFragmentManager, "SubmitLeaveDialog")
+        }
     }
 
     override fun onDestroyView() {

@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,13 +14,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Set default fragment
         loadFragment(HomeFragment())
-        
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+
+        // Handle BottomNavigationView item selection
+        binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_home -> loadFragment(HomeFragment())
-                R.id.nav_leave_summary -> loadFragment(LeaveSummaryFragment())
-                R.id.nav_profile -> loadFragment(ProfileFragment())
+                R.id.navigation_home -> loadFragment(HomeFragment())
+                R.id.navigation_leave_summary -> loadFragment(LeaveFragment())
+                R.id.navigation_profile -> loadFragment(ProfileFragment())
                 else -> false
             }
         }
