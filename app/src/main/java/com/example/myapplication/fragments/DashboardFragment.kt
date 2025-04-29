@@ -1,15 +1,16 @@
-package com.example.myapplication
+package com.example.myapplication.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.myapplication.databinding.FragmentNotificationsBinding
+import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentDashboardBinding
 
-class NotificationsFragment : Fragment() {
+class DashboardFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -17,17 +18,18 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textView.text = getString(R.string.notifications_fragment)
+        // You can add any initialization code here if needed
+        binding.textView.text = getString(R.string.dashboard_fragment)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-    }
+}

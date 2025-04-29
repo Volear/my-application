@@ -24,7 +24,7 @@ class SubmitLeaveDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnSubmit.setOnClickListener {
-            // Handle submission logic
+            // Handle submission
             dismiss()
         }
 

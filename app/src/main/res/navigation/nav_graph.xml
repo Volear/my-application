@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.leaveapp.fragments.HomeFragment"
-        android:label="fragment_home"
+        android:name="com.example.myapplication.fragments.HomeFragment"
+        android:label="Home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.leaveapp.fragments.DashboardFragment"
-        android:label="fragment_dashboard"
+        android:name="com.example.myapplication.fragments.DashboardFragment"
+        android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.example.leaveapp.fragments.NotificationsFragment"
-        android:label="fragment_notifications"
+        android:name="com.example.myapplication.fragments.NotificationsFragment"
+        android:label="Notifications"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/leaveFragment"
-        android:name="com.example.leaveapp.fragments.LeaveFragment"
-        android:label="fragment_leave"
+        android:name="com.example.myapplication.fragments.LeaveFragment"
+        android:label="Leave"
         tools:layout="@layout/fragment_leave" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.LeaveAdapter
+import com.example.myapplication.SubmitLeaveDialogFragment
 import com.example.myapplication.databinding.FragmentLeaveSummaryBinding
 
 class LeaveFragment : Fragment() {

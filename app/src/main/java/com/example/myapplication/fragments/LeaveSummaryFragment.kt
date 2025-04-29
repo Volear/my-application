@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.LeaveAdapter
+import com.example.myapplication.SubmitLeaveDialogFragment
 import com.example.myapplication.databinding.FragmentLeaveSummaryBinding
 
 class LeaveSummaryFragment : Fragment() {
@@ -24,14 +26,10 @@ class LeaveSummaryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Sample data
         val leaveList = listOf("Annual Leave", "Sick Leave", "Casual Leave")
-
-        // Set up RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = LeaveAdapter(leaveList)
 
-        // Show dialog on button click
         binding.submitLeaveButton.setOnClickListener {
             val dialog = SubmitLeaveDialogFragment()
             dialog.show(parentFragmentManager, "SubmitLeaveDialog")
