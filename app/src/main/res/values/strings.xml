@@ -12,4 +12,8 @@
     <string name="submit_leave">Submit Leave</string>
     <string name="dashboard_fragment">Dashboard Fragment</string>
     <string name="notifications_fragment">Notifications Fragment</string>
+    <string name="leave_reason_hint">Reason for leave</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    <string name="select_date">Select Date</string>
 </resources>

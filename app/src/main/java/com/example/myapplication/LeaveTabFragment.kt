@@ -32,8 +32,13 @@ class LeaveTabFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         // Update text to show which tab we're in
-        binding.textView.text = tabName
+        binding.textView.text = when (tabName) {
+            "Pending" -> "Your pending leave requests will appear here"
+            "Approved" -> "Your approved leave requests will appear here"
+            else -> tabName
+        }
     }
 
     override fun onDestroyView() {
