@@ -13,19 +13,19 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.myapplication.com.example.myapplication.DashboardFragment"
+        android:name="com.example.myapplication.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.myapplication.com.example.myapplication.NotificationsFragment"
+        android:name="com.example.myapplication.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/navigation_leave"
-        android:name="com.example.myapplication.com.example.myapplication.LeaveFragment"
+        android:name="com.example.myapplication.LeaveFragment"
         android:label="@string/title_leave"
         tools:layout="@layout/fragment_leave" />
 </navigation>
