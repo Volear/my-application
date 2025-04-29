@@ -1,15 +1,15 @@
-package com.example.leaveapp
+package com.example.myapplication
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.leaveapp.databinding.FragmentTab1Binding
+import com.example.myapplication.databinding.FragmentTabBinding
 
 class LeaveTabFragment : Fragment() {
 
-    private var _binding: FragmentTab1Binding? = null
+    private var _binding: FragmentTabBinding? = null
     private val binding get() = _binding!!
 
     private var tabName: String? = null
@@ -26,7 +26,7 @@ class LeaveTabFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTab1Binding.inflate(inflater, container, false)
+        _binding = FragmentTabBinding.inflate(inflater, container, false)
         return binding.root
     }
 
