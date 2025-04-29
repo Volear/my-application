@@ -21,6 +21,11 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // You can add initialization code here if needed
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
