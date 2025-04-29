@@ -5,37 +5,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.databinding.FragmentLeaveSummaryBinding
+import com.example.myapplication.databinding.FragmentLeaveTabBinding
 
-class LeaveFragment : Fragment() {
+class LeaveTabFragment : Fragment() {
 
-    private var _binding: FragmentLeaveSummaryBinding? = null
+    private var _binding: FragmentLeaveTabBinding? = null
     private val binding get() = _binding!!
+
+    companion object {
+        private const val ARG_TAB_NAME = "tab_name"
+
+        fun newInstance(tabName: String): LeaveTabFragment {
+            val fragment = LeaveTabFragment()
+            val args = Bundle()
+            args.putString(ARG_TAB_NAME, tabName)
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLeaveSummaryBinding.inflate(inflater, container, false)
+        _binding = FragmentLeaveTabBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Sample data
-        val leaveList = listOf("Annual Leave", "Sick Leave", "Casual Leave")
+        // Retrieve the tab name passed in arguments
+        val tabName = arguments?.getString(ARG_TAB_NAME)
 
-        // Set up RecyclerView
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = LeaveAdapter(leaveList)
-
-        // Submit Leave button opens dialog
-        binding.submitLeaveButton.setOnClickListener {
-            val dialog = SubmitLeaveDialogFragment()
-            dialog.show(parentFragmentManager, "SubmitLeaveDialog")
-        }
+        // Use tabName to display data specific to the tab
+        binding.textViewTabName.text = tabName
     }
 
     override fun onDestroyView() {

@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.appcompat.app.AlertDialog
 
-class SubmitLeaveDialogFragment : DialogFragment() {
+class SubmitLeaveConfirmationDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(requireContext())
             .setTitle("Submit Leave")
