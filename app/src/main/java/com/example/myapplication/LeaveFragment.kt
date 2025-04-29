@@ -5,100 +5,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.leaveapp.adapters.LeaveViewPagerAdapter
-import com.example.leaveapp.databinding.FragmentLeaveBinding
-import com.example.leaveapp.dialogs.SubmitLeaveDialogFragment
-import com.example.myapplication.databinding.FragmentLeaveBinding
-import com.google.android.material.tabs.TabLayoutMediator
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.databinding.FragmentLeaveSummaryBinding
 
 class LeaveFragment : Fragment() {
 
-    private var _binding: FragmentLeaveBinding? = null
+    private var _binding: FragmentLeaveSummaryBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLeaveBinding.inflate(inflater, container, false)
+        _binding = FragmentLeaveSummaryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Setup ViewPager with adapter
-        val viewPagerAdapter = LeaveViewPagerAdapter(this)
-        binding.viewPager.adapter = viewPagerAdapter
+        // Sample leave data
+        val leaveList = listOf("Annual Leave", "Sick Leave", "Casual Leave")
 
-        // Connect TabLayout with ViewPager
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            when (position) {
-                0 -> tab.text = "Annual"
-                1 -> tab.text = "Sick"
-                2 -> tab.text = "Other"
-                else -> tab.text = "Tab ${position + 1}"
-            }
-        }.attach()
-
-        // Setup Submit button
-        binding.btnSubmitLeave.setOnClickListener {
-            // Show dialog fragment when Submit Leave button is clicked
-            val dialogFragment = SubmitLeaveDialogFragment()
-            dialogFragment.show(parentFragmentManager, "SubmitLeaveDialog")
-        }
-    }
-
-    private fun setupTabs() {
-        // Set up ViewPager with adapter (only for the first two tabs)
-        val pagerAdapter = LeaveTabAdapter(this)
-        binding.viewPager.adapter = pagerAdapter
-        binding.viewPager.isUserInputEnabled = true
-
-        // Connect TabLayout with ViewPager for first two tabs
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            when (position) {
-                0 -> tab.text = getString(R.string.pending)
-                1 -> tab.text = getString(R.string.approved)
-            }
-        }.attach()
-
-        // Add the Submit Leave tab manually
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText(getString(R.string.submit_leave)))
-
-        // Handle tab selection
-        binding.tabLayout.addOnTabSelectedListener(object : com.google.android.material.tabs.TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: com.google.android.material.tabs.TabLayout.Tab?) {
-                when (tab?.position) {
-                    0, 1 -> {
-                        // Let ViewPager2 handle these tabs
-                        binding.viewPager.currentItem = tab.position
-                    }
-                    2 -> {
-                        // Show dialog for "Submit Leave" tab
-                        showSubmitLeaveDialog()
-                        // Return to the previously selected tab
-                        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(binding.viewPager.currentItem))
-                    }
-                }
-            }
-
-            override fun onTabUnselected(tab: com.google.android.material.tabs.TabLayout.Tab?) {
-                // Not needed
-            }
-
-            override fun onTabReselected(tab: com.google.android.material.tabs.TabLayout.Tab?) {
-                if (tab?.position == 2) {
-                    showSubmitLeaveDialog()
-                }
-            }
-        })
-    }
-
-    private fun showSubmitLeaveDialog() {
-        val dialog = SubmitLeaveDialogFragment()
-        dialog.show(childFragmentManager, "SubmitLeaveDialog")
+        // Set up RecyclerView
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = LeaveAdapter(leaveList)
     }
 
     override fun onDestroyView() {
