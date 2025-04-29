@@ -1,17 +1,13 @@
+package com.example.myapplication
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.yourapp.R
-import com.example.yourapp.databinding.ActivityMainBinding
-import com.example.yourapp.ui.dashboard.DashboardFragment
-import com.example.yourapp.ui.home.HomeFragment
-import com.example.yourapp.ui.leave.LeaveFragment
-import com.example.yourapp.ui.notifications.NotificationsFragment
+import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,14 +19,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Get NavHostFragment
+        // Get NavHostFragment
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
         // Set up Bottom Navigation with Navigation Component
         setupBottomNavigation()
 
-        //Optional: Set up the action bar to support navigation
+        // Optional: Set up the action bar to support navigation
         setupActionBar()
     }
 

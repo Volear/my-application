@@ -1,11 +1,11 @@
-package com.example.leaveapp
+package com.example.myapplication
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.leaveapp.databinding.FragmentNotificationsBinding
+import com.example.myapplication.databinding.FragmentNotificationsBinding
 
 class NotificationsFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class NotificationsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // You can add any initialization code here if needed
+        binding.textView.text = getString(R.string.notifications_fragment)
     }
 
     override fun onDestroyView() {

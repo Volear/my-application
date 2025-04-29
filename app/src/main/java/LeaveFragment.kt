@@ -1,11 +1,11 @@
-package com.example.leaveapp
+package com.example.myapplication
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.leaveapp.databinding.FragmentLeaveBinding
+import com.example.myapplication.databinding.FragmentLeaveBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 class LeaveFragment : Fragment() {
@@ -32,9 +32,9 @@ class LeaveFragment : Fragment() {
         // Connect TabLayout with ViewPager
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
-                0 -> tab.text = "Pending"
-                1 -> tab.text = "Approved"
-                2 -> tab.text = "Submit Leave"
+                0 -> tab.text = getString(R.string.pending)
+                1 -> tab.text = getString(R.string.approved)
+                2 -> tab.text = getString(R.string.submit_leave)
             }
         }.attach()
 

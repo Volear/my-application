@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_leave">Leave</string>
+    <string name="submit_leave_request">Submit Leave Request</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="pending">Pending</string>
+    <string name="approved">Approved</string>
+    <string name="submit_leave">Submit Leave</string>
+    <string name="dashboard_fragment">Dashboard Fragment</string>
+    <string name="notifications_fragment">Notifications Fragment</string>
 </resources>

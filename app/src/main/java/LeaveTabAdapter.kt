@@ -1,18 +1,41 @@
-package com.example.leaveapp
+package com.example.myapplication
 
-import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
+import com.example.myapplication.databinding.DialogSubmitLeaveBinding
 
-class LeaveTabAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class SubmitLeaveDialogFragment : DialogFragment() {
 
-    override fun getItemCount(): Int = 3
+    private var _binding: DialogSubmitLeaveBinding? = null
+    private val binding get() = _binding!!
 
-    override fun createFragment(position: Int): Fragment {
-        return when (position) {
-            0 -> LeaveTabFragment.newInstance("Pending")
-            1 -> LeaveTabFragment.newInstance("Approved")
-            2 -> LeaveTabFragment.newInstance("Submit")
-            else -> LeaveTabFragment.newInstance("Default")
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = DialogSubmitLeaveBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnConfirm.setOnClickListener {
+            // Add your confirm logic here
+            dismiss()
         }
+
+        binding.btnCancel.setOnClickListener {
+            dismiss()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
