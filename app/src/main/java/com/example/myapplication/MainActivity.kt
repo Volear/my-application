@@ -23,9 +23,18 @@ class MainActivity : AppCompatActivity() {
         // Handle BottomNavigationView item selection
         binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.navigation_home -> loadFragment(HomeFragment())
-                R.id.navigation_leave_summary -> loadFragment(LeaveFragment())
-                R.id.navigation_profile -> loadFragment(ProfileFragment())
+                R.id.navigation_home -> {
+                    loadFragment(HomeFragment())
+                    true
+                }
+                R.id.navigation_leave_summary -> {
+                    loadFragment(LeaveFragment())
+                    true
+                }
+                R.id.navigation_profile -> {
+                    loadFragment(ProfileFragment())
+                    true
+                }
                 else -> false
             }
         }

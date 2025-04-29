@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,18 @@ class SubmitLeaveDialogFragment : DialogFragment() {
 
     private var _binding: DialogSubmitLeaveBinding? = null
     private val binding get() = _binding!!
+    private var listener: SubmitLeaveListener? = null
+
+    interface SubmitLeaveListener {
+        fun onSubmitLeave()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is SubmitLeaveListener) {
+            listener = context
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +37,7 @@ class SubmitLeaveDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnSubmit.setOnClickListener {
-            // Handle submission
+            listener?.onSubmitLeave()
             dismiss()
         }
 
