@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.leaveapp.adapters.LeaveViewPagerAdapter
+import com.example.leaveapp.databinding.FragmentLeaveBinding
+import com.example.leaveapp.dialogs.SubmitLeaveDialogFragment
 import com.example.myapplication.databinding.FragmentLeaveBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -25,7 +28,26 @@ class LeaveFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupTabs()
+        // Setup ViewPager with adapter
+        val viewPagerAdapter = LeaveViewPagerAdapter(this)
+        binding.viewPager.adapter = viewPagerAdapter
+
+        // Connect TabLayout with ViewPager
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Annual"
+                1 -> tab.text = "Sick"
+                2 -> tab.text = "Other"
+                else -> tab.text = "Tab ${position + 1}"
+            }
+        }.attach()
+
+        // Setup Submit button
+        binding.btnSubmitLeave.setOnClickListener {
+            // Show dialog fragment when Submit Leave button is clicked
+            val dialogFragment = SubmitLeaveDialogFragment()
+            dialogFragment.show(parentFragmentManager, "SubmitLeaveDialog")
+        }
     }
 
     private fun setupTabs() {

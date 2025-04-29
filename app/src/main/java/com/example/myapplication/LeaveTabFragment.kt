@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.leaveapp.databinding.FragmentLeaveTabBinding
 import com.example.myapplication.databinding.FragmentTabBinding
 
 class LeaveTabFragment : Fragment() {
-
+    private var _binding: FragmentLeaveTabBinding? = null
     private var _binding: FragmentTabBinding? = null
     private val binding get() = _binding!!
-
     private var tabName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +32,7 @@ class LeaveTabFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Update text to show which tab we're in
+        
         binding.textView.text = when (tabName) {
             "Pending" -> "Your pending leave requests will appear here"
             "Approved" -> "Your approved leave requests will appear here"

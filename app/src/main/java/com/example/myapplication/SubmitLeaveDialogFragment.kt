@@ -32,7 +32,18 @@ class SubmitLeaveDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set up date pickers
+        binding.btnSubmit.setOnClickListener{
+            val reason = binding.etReason.text.toString()
+            if (reason.isNotEmpty())
+            {
+                Toast.makeText(requireContext(), "Leave request submitted", Toast.LENGTH_SHORT).show()
+                dismiss()
+            } else
+            {
+                Toast.makeText(requireContext(), "Please enter a reason", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         binding.btnFromDate.setOnClickListener {
             showDatePicker(true)
         }
@@ -42,9 +53,7 @@ class SubmitLeaveDialogFragment : DialogFragment() {
         }
 
         binding.btnConfirm.setOnClickListener {
-            // Validate and submit leave request
             if (validateForm()) {
-                // Here you would normally send the data to your backend
                 Toast.makeText(context, "Leave request submitted!", Toast.LENGTH_SHORT).show()
                 dismiss()
             }
