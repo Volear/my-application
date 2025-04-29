@@ -1,12 +1,10 @@
-package com.example.myapplication.com.example.myapplication
+package com.example.myapplication
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.myapplication.LeaveTabAdapter
-import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLeaveBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -27,18 +25,21 @@ class LeaveFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set up ViewPager with adapter
+        // Set up ViewPager with adapter (only for the first two tabs)
         val pagerAdapter = LeaveTabAdapter(this)
         binding.viewPager.adapter = pagerAdapter
+        binding.viewPager.isUserInputEnabled = true
 
         // Connect TabLayout with ViewPager
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
                 0 -> tab.text = getString(R.string.pending)
                 1 -> tab.text = getString(R.string.approved)
-                2 -> tab.text = getString(R.string.submit_leave)
             }
         }.attach()
+
+        // Add the Submit Leave tab manually since it won't be part of the ViewPager
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText(getString(R.string.submit_leave)))
 
         // Add a special click listener for the "Submit Leave" tab
         binding.tabLayout.addOnTabSelectedListener(object : com.google.android.material.tabs.TabLayout.OnTabSelectedListener {
@@ -46,7 +47,7 @@ class LeaveFragment : Fragment() {
                 if (tab?.position == 2) { // Submit Leave tab
                     showSubmitLeaveDialog()
                     // Return to the previous tab after showing the dialog
-                    binding.viewPager.currentItem = 0
+                    binding.tabLayout.selectTab(binding.tabLayout.getTabAt(0))
                 }
             }
 
