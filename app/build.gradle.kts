@@ -7,6 +7,11 @@ android {
     namespace = "com.example.leaveapp"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.leaveapp"
         minSdk = 24
