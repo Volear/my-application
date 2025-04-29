@@ -43,6 +43,8 @@ class LeaveFragment : Fragment() {
             override fun onTabSelected(tab: com.google.android.material.tabs.TabLayout.Tab?) {
                 if (tab?.position == 2) { // Submit Leave tab
                     showSubmitLeaveDialog()
+                    // Return to the previous tab after showing the dialog
+                    binding.viewPager.currentItem = 0
                 }
             }
 
