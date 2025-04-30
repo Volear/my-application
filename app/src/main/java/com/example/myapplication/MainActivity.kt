@@ -1,8 +1,6 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -23,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         loadFragment(HomeFragment())
 
         // Handle BottomNavigationView item selection
-        binding.bottomNavigationView.setOnItemSelectedListener { menuItem: MenuItem ->
+        binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_home -> {
                     loadFragment(HomeFragment())
@@ -37,10 +35,7 @@ class MainActivity : AppCompatActivity() {
                     loadFragment(ProfileFragment())
                     true
                 }
-                else -> {
-                    Log.e("MainActivity", "Unknown menu item selected")
-                    false
-                }
+                else -> false
             }
         }
     }

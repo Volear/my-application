@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/leaveFragment"
-        android:name="com.example.myapplication.fragments.LeaveFragment"
+        android:name="com.example.myapplication.fragments.LeaveTabFragment"
         android:label="Leave"
         tools:layout="@layout/fragment_leave" />
 </navigation>
