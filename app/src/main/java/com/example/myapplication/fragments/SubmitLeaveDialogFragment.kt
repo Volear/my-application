@@ -16,12 +16,15 @@ class SubmitLeaveDialogFragment : DialogFragment() {
 
     interface SubmitLeaveListener {
         fun onSubmitLeave()
+        fun onCancelLeave()
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is SubmitLeaveListener) {
             listener = context
+        } else {
+            throw ClassCastException("$context must implement SubmitLeaveListener")
         }
     }
 
@@ -36,18 +39,21 @@ class SubmitLeaveDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Handle "Yes, Submit" button
         binding.btnSubmit.setOnClickListener {
-            listener?.onSubmitLeave()
-            dismiss()
+            listener?.onSubmitLeave() // Notify listener
+            dismiss() // Close the dialog
         }
 
+        // Handle "No, Let me check" button
         binding.btnCancel.setOnClickListener {
-            dismiss()
+            listener?.onCancelLeave() // Notify listener
+            dismiss() // Close the dialog
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        _binding = null // Avoid memory leaks
     }
 }

@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    id("org.jetbrains.kotlin.kapt") // For Kotlin Annotation Processing (KAPT)
+    alias(libs.plugins.kotlin.android)     
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -65,4 +65,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
 }
