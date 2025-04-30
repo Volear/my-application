@@ -1,4 +1,5 @@
 [versions]
+fragmentKtx = "1.8.6"
 navigation = "2.8.9" # Navigation component version
 material = "1.12.0" # Material Design components version
 viewpager2 = "1.1.0" # ViewPager2 version
@@ -14,6 +15,7 @@ constraintlayout = "2.2.1" # ConstraintLayout version
 
 [libraries]
 # Navigation Components
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
 navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 

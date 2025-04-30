@@ -2,7 +2,7 @@ package com.example.myapplication.fragments
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 
@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Set up RecyclerView
+        setupRecyclerView()
 
         // Set default fragment
         loadFragment(HomeFragment())
@@ -36,6 +39,17 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    private fun setupRecyclerView() {
+        // Example data to display in RecyclerView
+        val exampleData = listOf("Item 1", "Item 2", "Item 3", "Item 4")
+
+        // Set layout manager
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Set adapter
+        binding.recyclerView.adapter = ExampleAdapter(exampleData)
     }
 
     private fun loadFragment(fragment: Fragment): Boolean {
