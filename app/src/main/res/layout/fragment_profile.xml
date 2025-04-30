@@ -8,6 +8,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to the Profile Fragment!"
+        android:text="@string/welcome_profile_fragment"
         android:textSize="18sp" />
 </LinearLayout>

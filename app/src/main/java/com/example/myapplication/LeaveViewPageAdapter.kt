@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.myapplication.fragments.LeaveTabFragment
 
 class LeaveViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 

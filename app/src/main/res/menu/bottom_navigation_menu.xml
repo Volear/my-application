@@ -1,17 +1,19 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/navigation_home" />
 
     <item
         android:id="@+id/navigation_leave_summary"
         android:icon="@drawable/ic_summary"
-        android:title="Leave Summary" />
+        android:title="@string/navigation_leave_summary" />
 
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_profile"
-        android:title="Profile" />
+        android:title="@string/navigation_profile" />
 </menu>

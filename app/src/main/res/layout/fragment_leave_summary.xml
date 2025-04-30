@@ -14,5 +14,5 @@
         android:id="@+id/submitLeaveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit Leave" />
+        android:text="@string/submit_leave" />
 </LinearLayout>
