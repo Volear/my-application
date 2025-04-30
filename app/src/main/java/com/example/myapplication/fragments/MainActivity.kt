@@ -1,12 +1,10 @@
-package com.example.myapplication
+package com.example.myapplication.fragments
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.fragments.HomeFragment
-import com.example.myapplication.fragments.LeaveTabFragment
-import com.example.myapplication.fragments.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
