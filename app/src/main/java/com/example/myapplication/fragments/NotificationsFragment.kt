@@ -52,7 +52,6 @@ class NotificationsFragment : Fragment() {
 
     private fun onNotificationClicked(notification: NotificationItem) {
         Snackbar.make(binding.root, "Clicked: ${notification.title}", Snackbar.LENGTH_SHORT).show()
-        // TODO: Handle notification click (e.g., mark as read, navigate to detail screen)
     }
 
     override fun onDestroyView() {

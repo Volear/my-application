@@ -54,17 +54,14 @@ class LeaveTabFragment : Fragment() {
     }
 
     private fun applyForLeave() {
-        // TODO: Implement apply for leave functionality
         showMessage("Applying for leave")
     }
 
     private fun approveLeave() {
-        // TODO: Implement approve leave functionality
         showMessage("Approving leave")
     }
 
     private fun showLeaveSummary() {
-        // TODO: Implement show leave summary functionality
         showMessage("Showing leave summary")
     }
 

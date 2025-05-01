@@ -62,6 +62,14 @@
     <string name="notification_icon">Notification icon</string>
     <string name="leave_type_icon">Leave type icon</string>
     <string name="apply">Apply</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_leave_summary">Leave Summary</string>
+    <string name="menu_profile">Profile</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="logout">Logout</string>
+    <string name="example_title">Title</string>
+    <string name="example_description">This is the description of the item.</string>
     <string name="leave_application_submitted">Leave application submitted!</string>
     <string name="home_welcome_text">Welcome to the Home Screen</string>
     <string name="home_placeholder">This is a placeholder for your content.</string>

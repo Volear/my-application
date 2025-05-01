@@ -31,19 +31,16 @@ class ProfileFragment : Fragment() {
 
     private fun setupUI() {
         binding.buttonEditProfile.setOnClickListener {
-            // TODO: Implement edit profile functionality
             Snackbar.make(binding.root, "Edit Profile clicked", Snackbar.LENGTH_SHORT).show()
         }
 
         binding.buttonLogout.setOnClickListener {
-            // TODO: Implement logout functionality
             Snackbar.make(binding.root, "Logout clicked", Snackbar.LENGTH_SHORT).show()
         }
     }
 
     @SuppressLint("SetTextI18n")
     private fun loadProfileData() {
-        // TODO: Load actual profile data from a data source (e.g., SharedPreferences, Database, or API)
         binding.textViewName.text = "Tinatin Samkharadze"
         binding.textViewEmail.text = "tinatin@example.com"
         binding.textViewPosition.text = "Test Automation Engineer"
