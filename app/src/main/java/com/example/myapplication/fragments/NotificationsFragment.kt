@@ -1,11 +1,11 @@
 package com.example.myapplication.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentNotificationsBinding
 
 class NotificationsFragment : Fragment() {
@@ -22,9 +22,11 @@ class NotificationsFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textView.text = getString(R.string.notifications_fragment)
+
+        binding.notificationsTitle.text = "Updated Notifications Title"
     }
 
     override fun onDestroyView() {

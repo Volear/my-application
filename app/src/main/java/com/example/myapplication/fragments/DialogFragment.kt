@@ -11,7 +11,6 @@ class SubmitLeaveConfirmationDialogFragment : DialogFragment() {
             .setTitle("Submit Leave")
             .setMessage("Double-check your leave details to ensure everything is correct. Do you want to proceed?")
             .setPositiveButton("Yes, Submit") { _, _ ->
-                // Handle submit logic here
             }
             .setNegativeButton("No, Let me check") { dialog, _ ->
                 dialog.dismiss()

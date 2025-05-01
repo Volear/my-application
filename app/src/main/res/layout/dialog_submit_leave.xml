@@ -4,59 +4,61 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="@drawable/ic_dialog_background"
+    android:elevation="8dp">
 
-    <!-- Icon -->
     <ImageView
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:src="@drawable/ic_submit_icon"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:contentDescription="@string/submit_leave_icon_desc" />
 
-    <!-- Title -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit Leave"
+        android:text="@string/submit_leave"
         android:textStyle="bold"
         android:textSize="18sp"
         android:gravity="center"
         android:layout_marginTop="16dp" />
 
-    <!-- Message -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Double-check your leave details to ensure everything is correct. Do you want to proceed?"
+        android:text="@string/double_check_leave_details"
         android:textSize="14sp"
         android:gravity="center"
         android:layout_marginTop="8dp" />
 
-    <!-- Buttons -->
     <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginTop="24dp">
 
-        <!-- Yes Submit Button -->
         <Button
             android:id="@+id/btnSubmit"
-            android:layout_width="wrap_content"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:backgroundTint="@color/purple_500"
             android:textColor="@android:color/white"
-            android:text="Yes, Submit" />
+            android:text="@string/yes_submit" />
 
-        <!-- No Let Me Check Button -->
         <Button
             android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:backgroundTint="@android:color/white"
             android:textColor="@color/purple_500"
-            android:text="No, Let me check"
+            android:text="@string/no_let_me_check"
             android:layout_marginStart="16dp" />
     </LinearLayout>
 

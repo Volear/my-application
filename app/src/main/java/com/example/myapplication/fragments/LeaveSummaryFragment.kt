@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.FragmentLeaveSummaryBinding
 
 class LeaveSummaryFragment : Fragment() {
-
     private var _binding: FragmentLeaveSummaryBinding? = null
     private val binding get() = _binding!!
 
@@ -24,13 +23,17 @@ class LeaveSummaryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val leaveList = listOf("Annual Leave", "Sick Leave", "Casual Leave")
+        val leaveItems = listOf(
+            LeaveSummaryItem("Sick Leave", "Approved", "1 May 2025 - 3 May 2025"),
+            LeaveSummaryItem("Casual Leave", "Pending", "5 May 2025 - 6 May 2025"),
+            LeaveSummaryItem("Vacation Leave", "Rejected", "10 May 2025 - 15 May 2025")
+        )
+
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = LeaveAdapter(leaveList)
+        binding.recyclerView.adapter = LeaveSummaryAdapter(leaveItems)
 
         binding.submitLeaveButton.setOnClickListener {
-            val dialog = SubmitLeaveConfirmationDialogFragment()
-            dialog.show(parentFragmentManager, "SubmitLeaveConfirmationDialog")
+            // TODO: Implement button action
         }
     }
 

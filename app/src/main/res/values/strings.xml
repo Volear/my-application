@@ -30,4 +30,17 @@
     <string name="double_check_leave_details">Double-check your leave details to ensure everything is correct. Do you want to proceed?</string>
     <string name="submit_leave_icon_desc">Icon representing submit leave</string>
     <string name="tab_name">Tab Name</string>
+    <string name="item_icon_desc">Icon representing the item</string>
+    <string name="add_item">Add a new item</string>
+    <string name="recycler_view_label">Items List</string>
+    <string name="recycler_view_description">List of items</string>
+    <string name="dashboard_title">Welcome to the Dashboard</string>
+    <string name="dashboard_button">Get Started</string>
+    <string name="home_welcome_text">Welcome to the Home Screen</string>
+    <string name="home_placeholder">This is a placeholder for your content.</string>
+    <string name="leave_title">Leave Application</string>
+    <string name="apply_leave_button">Apply for Leave</string>
+    <string name="leave_status">No leave applications submitted yet.</string>
+    <string name="leave_summary_title">Leave Summary</string>
+    <string name="leave_summary_recycler_description">List of leave applications and their details.</string>
 </resources>

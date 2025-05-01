@@ -1,9 +1,9 @@
-package com.example.myapplication
+package com.example.myapplication.fragments
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.fragments.SubmitLeaveDialogFragment
+import com.example.myapplication.R
 
 class MainActivity : AppCompatActivity(), SubmitLeaveDialogFragment.SubmitLeaveListener {
 
@@ -11,25 +11,19 @@ class MainActivity : AppCompatActivity(), SubmitLeaveDialogFragment.SubmitLeaveL
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Show the Submit Leave Dialog
         showSubmitLeaveDialog()
     }
 
-    // Method to show the dialog
     private fun showSubmitLeaveDialog() {
         val dialog = SubmitLeaveDialogFragment()
         dialog.show(supportFragmentManager, "SubmitLeaveDialogFragment")
     }
 
-    // Handle "Yes, Submit" action
     override fun onSubmitLeave() {
         Toast.makeText(this, "Leave submitted successfully!", Toast.LENGTH_SHORT).show()
-        // Add your submission logic here
     }
 
-    // Handle "No, Let me check" action
     override fun onCancelLeave() {
         Toast.makeText(this, "Leave submission canceled.", Toast.LENGTH_SHORT).show()
-        // Add your cancellation logic here
     }
 }
