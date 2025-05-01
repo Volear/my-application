@@ -1,28 +1,31 @@
 package com.example.myapplication.fragments
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.R
+import com.example.myapplication.databinding.ItemLayoutBinding
 
-class ExampleAdapter(private val items: List<String>) :
-    RecyclerView.Adapter<ExampleAdapter.ViewHolder>() {
+class ExampleAdapter(
+    private var items: List<String>,
+    private val onItemClick: (String) -> Unit
+) : RecyclerView.Adapter<ExampleAdapter.ViewHolder>() {
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val itemTitle: TextView = view.findViewById(R.id.itemTitle)
+    inner class ViewHolder(private val binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: String) {
+            binding.itemTitle.text = item
+            binding.root.setOnClickListener { onItemClick(item) }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_layout, parent, false)
-        return ViewHolder(view)
+        val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemTitle.text = items[position]
+        holder.bind(items[position])
     }
 
     override fun getItemCount(): Int = items.size
+
 }

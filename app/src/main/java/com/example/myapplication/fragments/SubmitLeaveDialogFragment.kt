@@ -12,7 +12,14 @@ class SubmitLeaveDialogFragment : DialogFragment() {
 
     private var _binding: DialogSubmitLeaveBinding? = null
     private val binding get() = _binding!!
+
     private var listener: SubmitLeaveListener? = null
+
+    companion object {
+        fun newInstance(): SubmitLeaveDialogFragment {
+            return SubmitLeaveDialogFragment()
+        }
+    }
 
     interface SubmitLeaveListener {
         fun onSubmitLeave()
@@ -24,12 +31,13 @@ class SubmitLeaveDialogFragment : DialogFragment() {
         if (context is SubmitLeaveListener) {
             listener = context
         } else {
-            throw ClassCastException("$context must implement SubmitLeaveListener")
+            throw RuntimeException("$context must implement SubmitLeaveListener")
         }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = DialogSubmitLeaveBinding.inflate(inflater, container, false)
@@ -39,21 +47,24 @@ class SubmitLeaveDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Handle "Yes, Submit" button
-        binding.btnSubmit.setOnClickListener {
-            listener?.onSubmitLeave() // Notify listener
-            dismiss() // Close the dialog
+        binding.submitButton.setOnClickListener {
+            listener?.onSubmitLeave()
+            dismiss()
         }
 
-        // Handle "No, Let me check" button
-        binding.btnCancel.setOnClickListener {
-            listener?.onCancelLeave() // Notify listener
-            dismiss() // Close the dialog
+        binding.cancelButton.setOnClickListener {
+            listener?.onCancelLeave()
+            dismiss()
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null // Avoid memory leaks
+        _binding = null
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
     }
 }

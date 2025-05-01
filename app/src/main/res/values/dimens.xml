@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dialog_corner_radius">16dp</dimen>
+    <dimen name="dialog_stroke_width">1dp</dimen>
+    <dimen name="dialog_padding">4dp</dimen>
+</resources>

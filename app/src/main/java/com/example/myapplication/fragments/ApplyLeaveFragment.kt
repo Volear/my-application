@@ -1,12 +1,13 @@
 package com.example.myapplication.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentApplyLeaveBinding
+import com.google.android.material.snackbar.Snackbar
 
 class ApplyLeaveFragment : Fragment() {
     private var _binding: FragmentApplyLeaveBinding? = null
@@ -20,22 +21,38 @@ class ApplyLeaveFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Handle Apply Leave button click
+        setupApplyLeaveButton()
+    }
+
+    private fun setupApplyLeaveButton() {
         binding.applyLeaveButton.setOnClickListener {
-            val leaveType = binding.leaveTypeInput.text.toString()
-            val leaveDates = binding.leaveDatesInput.text.toString()
+            val leaveType = binding.leaveTypeInput.text.toString().trim()
+            val leaveDates = binding.leaveDatesInput.text.toString().trim()
 
             if (leaveType.isNotEmpty() && leaveDates.isNotEmpty()) {
-                // TODO: Implement leave application submission logic
-                binding.statusMessage.text = "Leave application submitted!"
+                submitLeaveApplication()
             } else {
-                binding.statusMessage.text = "Please fill in all fields."
+                showErrorMessage(getString(R.string.fill_all_fields))
             }
         }
+    }
+
+    private fun submitLeaveApplication() {
+        // TODO: Implement leave application submission logic
+        showSuccessMessage(getString(R.string.leave_application_submitted))
+    }
+
+    private fun showSuccessMessage(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun showErrorMessage(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
+            .setBackgroundTint(resources.getColor(R.color.error_color, null))
+            .show()
     }
 
     override fun onDestroyView() {

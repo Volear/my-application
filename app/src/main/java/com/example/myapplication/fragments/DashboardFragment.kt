@@ -1,13 +1,13 @@
 package com.example.myapplication.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentDashboardBinding
+import com.google.android.material.snackbar.Snackbar
 
 class DashboardFragment : Fragment() {
 
@@ -18,22 +18,29 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout using View Binding
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set the title of the TextView
-        binding.dashboardTitle.text = "Welcome to the Dashboard!"
+        setupDashboardTitle()
+        setupDashboardButton()
+    }
 
-        // Handle button click
+    private fun setupDashboardTitle() {
+        binding.dashboardTitle.text = getString(R.string.welcome_dashboard)
+    }
+
+    private fun setupDashboardButton() {
         binding.dashboardButton.setOnClickListener {
-            Toast.makeText(requireContext(), "Dashboard Button Clicked!", Toast.LENGTH_SHORT).show()
+            showMessage(getString(R.string.dashboard_button_clicked))
         }
+    }
+
+    private fun showMessage(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

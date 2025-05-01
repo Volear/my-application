@@ -1,15 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Drawable for dialog background with rounded corners and border -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="16dp" />
+    <corners android:radius="@dimen/dialog_corner_radius" />
 
-    <solid android:color="@android:color/white" />
+    <solid android:color="?attr/colorSurface" />
 
     <stroke
-        android:width="1dp"
-        android:color="#D3D3D3" />
+        android:width="@dimen/dialog_stroke_width"
+        android:color="?attr/colorOutline" />
 
     <padding
-        android:bottom="4dp"
-        android:top="4dp"
-        android:left="4dp"
-        android:right="4dp" />
+        android:bottom="@dimen/dialog_padding"
+        android:left="@dimen/dialog_padding"
+        android:right="@dimen/dialog_padding"
+        android:top="@dimen/dialog_padding" />
 </shape>

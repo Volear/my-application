@@ -3,55 +3,69 @@ package com.example.myapplication.fragments
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), SubmitLeaveDialogFragment.SubmitLeaveListener {
 
-    // Using View Binding to access views in activity_main.xml
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Initialize View Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set up Toolbar
+        setupToolbar()
+        setupBottomNavigation()
+        setupFab()
+
+        if (savedInstanceState == null) {
+            loadFragment(HomeFragment())
+        }
+    }
+
+    private fun setupToolbar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = getString(R.string.app_name)
+    }
 
-        // Set up RecyclerView
-        setupRecyclerView()
+    private fun setupBottomNavigation() {
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> loadFragment(HomeFragment())
+                R.id.navigation_leave_summary -> loadFragment(LeaveSummaryFragment())
+                R.id.navigation_profile -> loadFragment(ProfileFragment())
+                else -> false
+            }
+        }
+    }
 
-        // Set up FloatingActionButton click listener
+    private fun setupFab() {
         binding.fab.setOnClickListener {
             showSubmitLeaveDialog()
         }
     }
 
-    // Method to set up RecyclerView
-    private fun setupRecyclerView() {
-        val sampleData = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = ExampleAdapter(sampleData)
+    private fun loadFragment(fragment: Fragment): Boolean {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
+        return true
     }
 
-    // Show SubmitLeaveDialogFragment
     private fun showSubmitLeaveDialog() {
-        val dialog = SubmitLeaveDialogFragment()
+        val dialog = SubmitLeaveDialogFragment.newInstance()
         dialog.show(supportFragmentManager, "SubmitLeaveDialogFragment")
     }
 
-    // Handle dialog submit action
     override fun onSubmitLeave() {
-        Toast.makeText(this, "Leave submitted successfully!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.leave_submitted), Toast.LENGTH_SHORT).show()
+        // Refresh the current fragment or navigate to leave summary
+        binding.bottomNavigation.selectedItemId = R.id.navigation_leave_summary
     }
 
-    // Handle dialog cancel action
     override fun onCancelLeave() {
-        Toast.makeText(this, "Leave submission canceled.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.leave_cancelled), Toast.LENGTH_SHORT).show()
     }
 }

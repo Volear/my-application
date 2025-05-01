@@ -1,24 +1,74 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
 
-    <TextView
-        android:id="@+id/notificationTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notification Title"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="4dp" />
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/notificationDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification Description"
-        android:textSize="14sp"
-        android:layout_marginBottom="8dp" />
+        <View
+            android:id="@+id/notificationIndicator"
+            android:layout_width="8dp"
+            android:layout_height="0dp"
+            android:background="@color/purple_500"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/notificationTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?attr/textAppearanceHeadline2"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/notificationTime"
+            app:layout_constraintStart_toEndOf="@+id/notificationIndicator"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="New Leave Request" />
+
+        <TextView
+            android:id="@+id/notificationDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/notificationTitle"
+            app:layout_constraintTop_toBottomOf="@+id/notificationTitle"
+            tools:text="Your leave request has been approved for May 10-15, 2023" />
+
+        <TextView
+            android:id="@+id/notificationTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/purple_700"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2 hours ago" />
+
+        <ImageView
+            android:id="@+id/notificationIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/notification_icon"
+            app:layout_constraintStart_toStartOf="@+id/notificationTitle"
+            app:layout_constraintTop_toBottomOf="@+id/notificationDescription"
+            app:tint="@color/purple_500"
+            tools:src="@android:drawable/ic_dialog_info" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
