@@ -1,65 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@drawable/ic_dialog_background"
-    android:elevation="8dp">
-
-    <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@drawable/ic_submit_icon"
-        android:layout_gravity="center"
-        android:contentDescription="@string/submit_leave_icon_desc" />
+    android:padding="16dp">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/submit_leave"
-        android:textStyle="bold"
+        android:text="Submit Leave"
         android:textSize="18sp"
-        android:gravity="center"
-        android:layout_marginTop="16dp" />
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
 
-    <TextView
+    <EditText
+        android:id="@+id/leaveReason"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/double_check_leave_details"
-        android:textSize="14sp"
-        android:gravity="center"
-        android:layout_marginTop="8dp" />
+        android:layout_marginBottom="16dp"
+        android:hint="Enter reason for leave"
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <LinearLayout
-        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="24dp">
+        android:gravity="end">
 
         <Button
-            android:id="@+id/btnSubmit"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0dp"
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/purple_500"
-            android:textColor="@android:color/white"
-            android:text="@string/yes_submit" />
+            android:text="Submit" />
 
         <Button
-            android:id="@+id/btnCancel"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0dp"
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@android:color/white"
-            android:textColor="@color/purple_500"
-            android:text="@string/no_let_me_check"
-            android:layout_marginStart="16dp" />
+            android:text="Cancel"
+            android:layout_marginStart="8dp" />
     </LinearLayout>
-
 </LinearLayout>

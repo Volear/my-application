@@ -36,6 +36,19 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp" />
 
+        <!-- Added the new TextView here -->
+        <TextView
+            android:id="@+id/itemSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="New Subtitle"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"

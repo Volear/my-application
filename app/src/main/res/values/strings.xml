@@ -43,4 +43,7 @@
     <string name="leave_status">No leave applications submitted yet.</string>
     <string name="leave_summary_title">Leave Summary</string>
     <string name="leave_summary_recycler_description">List of leave applications and their details.</string>
+    <string name="apply_leave_title">Apply for leave</string>
+    <string name="leave_type_hint">Enter leave type</string>
+    <string name="leave_dates_hint">Enter leave dates</string>
 </resources>
